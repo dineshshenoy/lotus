@@ -1,0 +1,49 @@
+definitions:
+  FooBarRequest:
+    properties:
+      bar:
+        items:
+          format: int64
+          type: integer
+        type: array
+        x-go-name: Bar
+      foo:
+        type: string
+        x-go-name: Foo
+    title: FooBarRequest represents body of FooBar request.
+    type: object
+    x-go-package: github.com/pdrum/swagger-automation/api
+  FooBarResponse:
+    properties:
+      baz:
+        properties:
+          prop:
+            type: string
+            x-go-name: Prop
+        type: object
+        x-go-name: Baz
+    title: FooBarResponse represents body of FooBar response.
+    type: object
+    x-go-package: github.com/pdrum/swagger-automation/api
+paths:
+  /foobar:
+    post:
+      operationId: idOfFoobarEndpoint
+      parameters:
+      - description: This text will appear as description of your request body.
+        in: body
+        name: Body
+        schema:
+          $ref: '#/definitions/FooBarRequest'
+      responses:
+        "200":
+          $ref: '#/responses/foobarResponse'
+      summary: Foobar does some strange wild wild stuffy stuff.
+      tags:
+      - foobar-tag
+responses:
+  foobarResponse:
+    description: This text will appear as description of your response body.
+    schema:
+      $ref: '#/definitions/FooBarResponse'
+swagger: "2.0"
