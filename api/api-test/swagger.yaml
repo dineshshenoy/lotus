@@ -1,3 +1,6 @@
+basePath: /rpc/v0
+consumes:
+- application/json
 definitions:
   FooBarRequest:
     properties:
@@ -25,6 +28,11 @@ definitions:
     title: FooBarResponse represents body of FooBar response.
     type: object
     x-go-package: github.com/pdrum/swagger-automation/api
+host: <lotus-node>:1234
+info:
+  description: Documentation of our awesome API.
+  title: awesome.
+  version: 1.0.2
 paths:
   /foobar:
     post:
@@ -41,9 +49,16 @@ paths:
       summary: Foobar does some strange wild wild stuffy stuff.
       tags:
       - foobar-tag
+produces:
+- application/json
 responses:
   foobarResponse:
     description: This text will appear as description of your response body.
     schema:
       $ref: '#/definitions/FooBarResponse'
+schemes:
+- http
+securityDefinitions:
+  basic:
+    type: basic
 swagger: "2.0"
